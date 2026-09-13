@@ -27,5 +27,7 @@ if [ "$CURRENT_VERSION" != "$TARGET_VERSION" ]; then
 else
     echo "Jackett is already up to date."
 fi
-echo " Launching Jackett Server."
-exec "$APP_DIR/jackett" --NoRestart --DataFolder "$CONFIG_DIR"
+chown -R jackett:jackett "$APP_DIR" "$CONFIG_DIR"
+echo " Launching Jackett Server as non-root user."
+
+exec su-exec jackett "$APP_DIR/jackett" --NoRestart --DataFolder "$CONFIG_DIR"
