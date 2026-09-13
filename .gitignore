@@ -1,0 +1,17 @@
+# Environment variables & secrets
+.env
+*.local
+
+# Config & runtime data directories
+config/
+downloads/
+data/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor & IDE settings
+.vscode/
+.idea/
