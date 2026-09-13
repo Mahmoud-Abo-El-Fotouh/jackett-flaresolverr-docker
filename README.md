@@ -63,6 +63,16 @@ Open your browser and navigate to:
 
 ---
 
+## 📸 Live Stack & Performance Preview
+
+### 1. Running Containers (`docker ps`)
+![Docker Stack Live Preview](docker-ps-preview.jpg)
+
+### 2. Resource Utilization (`docker stats`)
+![Docker Resource Stats](docker-stats-preview.png)
+
+---
+
 ## ⚙️ Connecting FlareSolverr in Jackett
 
 1. Open the Jackett dashboard at `http://localhost:8080`.
@@ -73,6 +83,40 @@ Open your browser and navigate to:
    ```
 4. Click the **Apply server settings** button to save changes.
 5. Add any Cloudflare-protected indexer (e.g., `1337x`) and click **Test** to verify.
+
+---
+
+## 🔌 Desktop Client Integration (qBittorrent)
+
+You can connect qBittorrent's built-in search engine directly to this stack using either of the following methods:
+
+### Method 1: Direct Configuration File (`jackett.json`) — Recommended for Windows
+
+1. Copy your **API Key** from the top right of the Jackett UI (`http://localhost:8080`).
+2. Press `Win + R`, paste the following path, and press `Enter`:
+   ```text
+   %localappdata%\qBittorrent\nova3\engines
+   ```
+3. Open `jackett.json` with any text editor and configure:
+   ```json
+   {
+       "api_key": "YOUR_JACKETT_API_KEY_HERE",
+       "url": "http://127.0.0.1:8080"
+   }
+   ```
+4. Save and close the file.
+
+### Method 2: Via qBittorrent Search UI
+
+1. In qBittorrent, enable the search engine via **View** -> **Search Engine**.
+2. Open the **Search** tab and click **Search plugins...** in the bottom right.
+3. Locate **Jackett** in the plugin list (or click *Check for updates* if missing).
+4. Right-click on the **Jackett** plugin -> select **Edit** / double-click:
+   * **URL:** `http://127.0.0.1:8080`
+   * **API Key:** Paste your Jackett API Key.
+5. Save changes.
+
+You can now search across all configured indexers directly from qBittorrent!
 
 ---
 
